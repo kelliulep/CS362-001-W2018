@@ -1,0 +1,21 @@
+Bug 1: toString() outputs incorrect string representation of a date in Appt.
+
+Cause: toString meant to concatenate the variables but ended up adding the variables instead to be represented as 1 number.
+The test created an appointment with the date expected to be shown as 12/1/2018 but the function represented it as 2031.
+The bug was first found using the test testToString() from ApptTest, and again from testToString2().
+
+
+Bug 2: represntationApp() returns the incorrect time representation of the appointment.
+Cause: There is an incorrect formatting of the appointment. The “am” and “pm” strings are switched.
+This is a problem that lies in the private function represntationApp() called by toString() in Appt
+The bug was found using the testToString() from ApptTest and the testToString2() function from CalDayTest.
+
+Bug 3:
+Symptom: deleteAppt() in TimeTable does not delete an Appt properly.
+Cause: The for loop is deleteAppt() is not executing for the proper amount of times or finding the appointment to delete.
+
+The bug was found using testDelete2() from TimeTableTest. The test was set up add 2 appointments to a Appt LinkedList.
+Then it deletes the last added appointment and the first added appointment.
+The assertion to check the size after deleting the last added appointment failed - the appointment did not delete properly and the size did not decrease.
+After trying to delete both of the appointments, the size shows that only one got deleted.
+Severity/Priority: It is severe because it only does not work properly for some cases
